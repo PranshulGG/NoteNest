@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         webview = findViewById(R.id.webView);
+
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -115,7 +116,9 @@ public class MainActivity extends AppCompatActivity {
         webview.addJavascriptInterface(new WebAppInterface(), "Android");
         webview.addJavascriptInterface(new ShowToastInterface(this), "ToastAndroidShow");
 
-        webview.loadUrl("http://192.168.1.18:8080/");
+
+
+        webview.loadUrl("file:///android_asset/index.html");
 
         requestStoragePermission();
 
@@ -174,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
+
 
 
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -1218,9 +1222,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
+
         private boolean shouldOpenInBrowser(String url) {
             // Return false for the URLs that should open in the WebView
-            if (url.startsWith("http://192.168.1.18:8080/"))
+            if (url.startsWith("file:///android_asset/index.html"))
+
             {
                 return false;
             }

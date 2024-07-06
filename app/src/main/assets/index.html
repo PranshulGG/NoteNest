@@ -1,0 +1,867 @@
+<!-- Class and ID names are pretty bad 😓 -->
+
+<!DOCTYPE html>
+<html lang="en" data-theme="" dir="ltr" theme="auto" scalable="false">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <title>NoteNest</title>
+  <link rel="stylesheet" href="ui-files/ui.css">
+  <link rel="stylesheet" href="ui-files/font-usage.css">
+  <link rel="stylesheet" href="ui-files/variables.css">
+  <link rel="stylesheet" href="components/md-buttons.css">
+  <link rel="stylesheet" href="components/components.css">
+  <link rel="stylesheet" href="ripple-files/ripple.css">
+  <link rel="stylesheet" href="components/modal-ver.css">
+  <link rel="stylesheet" href="components/segment-btns.css">
+</head>
+
+
+
+<body>
+  <div class="top_header_tabs" id="head_main" open>
+    <p id="tab_label"></p>
+    <div>
+
+      <md-icon-button onclick="profileEdit()" style="--md-icon-button-icon-size: 35px;">
+        <img src="profile.png" id="prevProfileIMg" style="border-radius: 50px; width: 35px; height: 35px; object-fit: cover; image-rendering: -webkit-optimize-contrast;">
+      </md-icon-button>
+
+      <button class="ripple-icon-btn regular closeAboutPage" onclick="window.history.back()" hidden title="Close"
+        data-icon="close" icon-type="outlined">
+      </button>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="tab-content" id="tab-content-0">
+    <div class="profileWelcome">
+      <p id="profileName">Your name</p>
+      <span>Welcome back!</span>
+    </div>
+
+    <div id="notesContainer" class="" style="padding-bottom: 170px; padding-top: 20px;">
+
+    </div>
+
+
+
+    <div class="waterMark" id="mark_1" style="margin-top: 0; position: relative; bottom: 110px;">
+      <i icon-outlined>contract_delete</i>
+      <p>No notes</p>
+    </div>
+
+
+
+
+
+    <div class="fab_container" fab="fab_1"
+      style="display: flex; flex-direction: column; align-items: flex-end; gap: 15px;">
+      <md-fab size="small" id="addLabelsNotes"><md-icon slot="icon" icon-outlined>new_label</md-icon></md-fab>
+      <md-fab variant="primary" id="AddNote" label="Add note" style="--md-fab-label-text-size: 1rem;">
+        <md-icon icon-outlined slot="icon">edit</md-icon>
+      </md-fab>
+    </div>
+
+    <!-- confirm -->
+
+    <md-dialog id="confirmDeleteNoteDialog">
+      <md-icon icon-outlined slot="icon">delete</md-icon>
+      <div slot="headline">Delete this note?</div>
+      <form slot="content" method="dialog" id="confirmDeleteNote">
+        Are you sure you want to delete this note? This action can't be undone
+      </form>
+      <div slot="actions">
+        <md-text-button form="confirmDeleteNote">Cancel</md-text-button>
+        <md-filled-button form="confirmDeleteNote" id="deleteNoteOK">Delete</md-filled-button>
+      </div>
+    </md-dialog>
+
+
+  </div>
+  <div class="tab-content" id="tab-content-1">
+    <md-tabs
+      style="--md-primary-tab-label-text-size: 1em; --md-primary-tab-label-text-font: var(--google-mid); z-index: 1; position: sticky; top: 0;"
+      id="todos-tabs">
+      <md-primary-tab>List</md-primary-tab>
+      <md-primary-tab>Completed</md-primary-tab>
+    </md-tabs>
+
+
+    <div id="taskList" class="grid-todo" style="padding-bottom: 90px;">
+
+    </div>
+
+    <div id="completedTaskList" class="grid-todo" hidden style="padding-bottom: 90px;">
+    </div>
+
+
+    <div class="waterMark" id="mark_3" style="margin-top: 0;">
+      <i icon-outlined>playlist_remove</i>
+      <p>No Tasks</p>
+    </div>
+
+
+
+
+    <div class="fab_container" fab="fab_2">
+      <md-fab variant="primary" id="AddTodo" label="Add task" style="--md-fab-label-text-size: 1rem;">
+        <md-icon icon-outlined slot="icon">add</md-icon>
+      </md-fab>
+    </div>
+
+
+
+
+
+    <!-- add todo dialog -->
+    <md-dialog id="addTodoItemDialog" style="width: 100%;">
+      <div slot="headline">Add a task</div>
+      <form slot="content" id="addTaskDialogForm" method="dialog">
+        <md-outlined-text-field type="textarea" placeholder="Enter a item" id="addTaskInput" autocomplete="off"
+          style="width: 100%; resize: none;" supporting-text="Swipe left on the task to delete it">
+
+        </md-outlined-text-field>
+
+        <md-assist-chip label="Add reminder" style="margin-top: 20px;" elevated
+          onclick="ShowSnack(`This feature doesn't work yet`, 2000, 3, 'none', '', 'no-up')">
+          <md-icon slot="icon" icon-outlined>alarm</md-icon>
+        </md-assist-chip>
+      </form>
+      <div slot="actions">
+        <md-text-button form="addTaskDialogForm">Cancel</md-text-button>
+        <md-text-button form="addTaskDialogForm" disabled id="AddTaskDialogBtn">Add</md-text-button>
+      </div>
+    </md-dialog>
+  </div>
+
+  <div class="tab-content" id="tab-content-2">
+
+    <p class="title">App looks</p>
+    <md-list>
+
+
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 0; margin-bottom: 5px; border-radius: 20px 20px 10px 10px;">
+        <md-icon icon-filled slot="start">dark_mode</md-icon>
+        <div slot="headline">Dark theme</div>
+        <div slot="supporting-text">Dark color scheme for the app</div>
+        <md-switch slot="end" id="dark_mode_switch" aria-label="Enable dark mode"></md-switch>
+      </md-list-item>
+
+
+      <div class="theme_selection">
+
+        <div class="theme_items">
+
+          <div class="color_item " style="margin-left: 10px;">
+            <input type="radio" name="themes" id="blue" value="Material You (Berry pop blue 44)">
+            <label for="blue" style="--clr: #2196f3;"></label>
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="purple" value="Material You (Raisin purple 100)">
+            <label for="purple" style="--clr: #673ab7;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="yellow" value="Material You (Olive pop green 49)">
+            <label for="yellow" style="--clr: #ffeb3b;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="green" value="Material You (Forest green 33)">
+            <label for="green" style="--clr: #4caf50;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="red" value="Material You (Chestnut cool red 122)">
+            <label for="red" style="--clr: #f01d0d;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="pink" value="Material You (Raspberry pink P99)">
+            <label for="pink" style="--clr: #e91e63;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="orange" value="Material You (Hint orange 33)">
+            <label for="orange" style="--clr: #ff5722;"></label>
+
+          </div>
+
+          <div class="color_item ">
+            <input type="radio" name="themes" id="charcoal" value="Material You (Deep charcoal 83)">
+            <label for="charcoal" style="--clr: #607d8b;"></label>
+
+          </div>
+
+          <div class="color_item " style="margin-right: 10px;">
+            <input type="radio" name="themes" id="blue-bright" value="Material You (Blue bright P40)" checked>
+            <label for="blue-bright" style="--clr: #3f51b5;"></label>
+
+          </div>
+        </div>
+      </div>
+
+
+    </md-list>
+
+
+    <md-list>
+      <p class="title" style="margin-top: 0px;">General</p>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 20px 20px 10px 10px; margin-bottom: 0;">
+        <md-icon icon-filled slot="start">lock</md-icon>
+        <div slot="headline">Lock app</div>
+        <div slot="supporting-text">Secure the app with a password</div>
+        <md-switch slot="end" id="Lock_app_toggle" aria-label="App lock"></md-switch>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;"
+        id="autoLockAppMdItem">
+        <md-icon icon-filled slot="start">lock_clock</md-icon>
+        <div slot="headline">Auto-lock app</div>
+        <div slot="supporting-text">The app locks itself when minimized, and also when the screen is turned off or the
+          device goes to sleep</div>
+        <md-switch slot="end" id="autoLockAppSleepSwitch"></md-switch>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;"
+        disabled id="change_app_password_toggle" type="button">
+        <md-icon icon-filled slot="start">lock_reset</md-icon>
+        <div slot="headline">Change password</div>
+        <div slot="supporting-text">Create or change your app password</div>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;"
+        id="ShowconfirmationdialogsSelectBtn" type="button">
+        <md-icon icon-filled slot="start">warning</md-icon>
+        <div slot="headline">Show confirmation dialog</div>
+        <div slot="supporting-text" id="confirmationSeletedOpenText">Always</div>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;">
+        <md-icon icon-filled slot="start">grid_view</md-icon>
+        <div slot="headline">Grid view</div>
+        <div slot="supporting-text">Use grid view for Notes (labels will be hidden)</div>
+        <md-switch slot="end" id="grid_4x4"></md-switch>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;">
+        <md-icon slot="start" icon-filled>link</md-icon>
+        <div slot="headline">Links to button</div>
+        <div slot="supporting-text">Convert all the links within the notes to buttons</div>
+        <md-switch slot="end" id="convertLinksToButtonToggle"></md-switch>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;"
+        disabled id="selectLinkButtonTypeListMd">
+        <div slot="headline">Link button type</div>
+
+        <md-outlined-select id="selectLinkButtonType" slot="end"
+          style="min-width: max-content; --md-outlined-field-bottom-space: 10px;--md-outlined-field-top-space: 10px;">
+          <md-select-option value="filled" menu-type-regular selected>
+            <div slot="headline">Filled</div>
+          </md-select-option>
+          <md-select-option value="outlined" menu-type-regular>
+            <div slot="headline">Outlined</div>
+          </md-select-option>
+          <md-select-option value="filled-tonal" menu-type-regular>
+            <div slot="headline">Tonal</div>
+          </md-select-option>
+        </md-outlined-select>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;">
+        <md-icon slot="start" icon-filled>buttons_alt</md-icon>
+        <div slot="headline">Small FAB</div>
+        <div slot="supporting-text">Show small size action button on all screens</div>
+        <md-switch slot="end" id="useSmallFabToggle"></md-switch>
+      </md-list-item>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;">
+        <md-icon slot="start" icon-filled>short_text</md-icon>
+        <div slot="headline">Short url</div>
+        <div slot="supporting-text">Shorten the URL text for link buttons</div>
+        <md-switch slot="end" id="ShortUrlButtonToggle" selected></md-switch>
+      </md-list-item>
+
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px; margin-bottom: 0;">
+        <md-icon slot="start" icon-filled>border_color</md-icon>
+        <div slot="headline">Default link color</div>
+        <div slot="supporting-text">Use normal blue color for links</div>
+        <md-checkbox slot="end" id="useDefaultLinkColor"></md-checkbox>
+      </md-list-item>
+
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px 10px 20px 20px; margin-bottom: 0;">
+        <md-icon icon-filled slot="start">label_off</md-icon>
+        <div slot="headline">Hide labeles</div>
+        <div slot="supporting-text">Only the selected tab's label is displayed</div>
+        <md-switch slot="end" id="hide_tab_label" aria-label="Hide labeles"></md-switch>
+      </md-list-item>
+
+    </md-list>
+
+    <md-list>
+      <p class="title" style="margin-top: 5px;">Backup</p>
+
+      <md-list-item style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 20px 20px 10px 10px; margin-bottom: 0;" type="button" id="importBtn">
+        <md-icon slot="start" icon-filled>download</md-icon>
+        <div slot="headline">Import backup</div>
+      </md-list-item>
+
+      <md-list-item style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 10px 10px 20px 20px; margin-bottom: 0;" type="button" id="exportBtn">
+        <md-icon slot="start" icon-filled>upload</md-icon>
+        <div slot="headline">Export backup</div>
+      </md-list-item>
+
+      <input type="file" name="ImportFile" id="importFile" hidden>
+
+    </md-list>
+
+    <md-list>
+      <p class="title" style="margin-top: 5px;">Additional</p>
+
+      <md-list-item
+        style="background-color: var(--Surface-Container-Low); margin: 10px; margin-top: 5px; border-radius: 20px 20px 10px 10px; margin-bottom: 0;">
+        <md-icon icon-filled slot="start">format_paint</md-icon>
+        <div slot="headline">Theme name</div>
+        <div slot="supporting-text" id="themeName"></div>
+      </md-list-item>
+
+      <md-list-item onclick="clearAppData()"
+        style="--md-list-item-pressed-state-layer-color: var(--Error); background-color: var(--Surface-Container-Low); border-radius: 10px 10px 20px 20px; margin: 10px; margin-top: 5px; --md-list-item-hover-state-layer-color: var(--Error);"
+        type="button">
+        <md-icon icon-filled slot="start" style="color: var(--Error);">delete_forever</md-icon>
+        <div slot="headline">Delete app data</div>
+        <div slot="supporting-text">Removes passwords, notes, and to-dos, and resets the app</div>
+      </md-list-item>
+
+
+    </md-list>
+
+    <!-- verify-pass-delete-data -->
+    <md-dialog id="deleteDataDialog">
+      <div slot="headline">Verify password</div>
+      <div slot="content">
+        <md-outlined-text-field placeholder="Enter password" autocomplete="off" id="verifyPassDeleteDataInput"
+          type="password" error-text="Wrong password. Try again">
+        </md-outlined-text-field>
+
+        <p>This action removes app lock, notes, and to-dos, and resets the app. It can't be undone</p>
+      </div>
+
+      <div slot="actions">
+        <md-text-button id="cancelDataDelete"
+          onclick="document.getElementById('deleteDataDialog').close()">Cancel</md-text-button>
+        <md-text-button id="VerifyDeleteData" style="width: 77px; height: 44px;">Delete</md-text-button>
+      </div>
+    </md-dialog>
+
+
+    <!-- confirm deletedata -->
+
+    <md-dialog id="confirmDeleteDataDialog">
+      <div slot="headline">Are you sure you want to clear the app data?</div>
+      <form slot="content" id="confirmAppDataClear" method="dialog">
+        This action removes app lock, notes, and to-dos, and resets the app. It can't be undone
+      </form>
+      <div slot="actions">
+        <md-text-button form="confirmAppDataClear">Cancel</md-text-button>
+        <md-text-button form="confirmAppDataClear" id="clearConfirmDataBtnOK">Clear</md-text-button>
+      </div>
+    </md-dialog>
+
+
+
+    <!-- change pass dialog -->
+
+    <md-dialog id="changePasswordDialog">
+      <div slot="headline">Change password</div>
+
+      <form method="dialog" id="changePassForm" slot="content">
+        <md-outlined-text-field placeholder="Enter old password" id="enter_old_pass_change"
+          error-text="Wrong password"></md-outlined-text-field>
+        <div class="change_pass_div" style="display: flex; gap: 4px; margin-top: 5px;">
+          <md-outlined-text-field placeholder="New" maxlength="4" id="enter_new_pass_change"></md-outlined-text-field>
+          <md-outlined-text-field placeholder="Confirm" maxlength="4" id="enter_new_pass_confirm_change"
+            error-text="Wrong"></md-outlined-text-field>
+        </div>
+
+        <div class="passlength_change"
+          style="display: flex; align-items: center; gap: 20px; margin-top: 10px; padding: 10px;">
+          <label style="display: flex; align-items: center; gap: 5px;">
+            <md-radio name="change_pass_length" id="4-length-radio" value="4-length" checked></md-radio>
+            4 length
+          </label>
+          <label style="display: flex; align-items: center; gap: 5px;">
+            <md-radio name="change_pass_length" id="8-length-radio" value="8-length"></md-radio>
+            8 length
+          </label>
+        </div>
+      </form>
+
+      <div slot="actions">
+        <md-text-button form="changePassForm">Cancel</md-text-button>
+        <md-text-button disabled id="saveNewCreatedPass">Save</md-text-button>
+      </div>
+    </md-dialog>
+
+
+    <!-- show confirm dialog options selection -->
+
+    <md-dialog id="showconfirmationdialogsSelectionDialog">
+      <div slot="headline">Show confirmation dialog</div>
+      <form method="dialog" slot="content" id="ShowconfirmationdialogsForm" style="padding-left: 0; padding-right: 0;">
+
+        <label style="display: flex; align-items: center; padding-left: 15px; padding-right: 15px;"
+          class="ripple_btn_low">
+          <md-radio name="ShowconfirmationdialogsRadioGroup" value="Never" id="Never" aria-label="NeverShow"
+            touch-target="wrapper"></md-radio>
+          <span aria-hidden="true" style="font-size: 18px;">Never</span>
+        </label>
+        <label style="display: flex; align-items: center; padding-left: 15px; padding-right: 15px;"
+          class="ripple_btn_low">
+          <md-radio name="ShowconfirmationdialogsRadioGroup" value="Always" id="Always" aria-label="AlwaysShow"
+            touch-target="wrapper" checked></md-radio>
+          <span aria-hidden="true" style="font-size: 18px;">Always</span>
+        </label>
+
+      </form>
+
+    </md-dialog>
+  </div>
+
+
+
+
+  <div class="tab-content" id="tab-content-3">
+
+    <div class="info-wrap">
+
+
+      <div class="info-item ripple_btn_low" onclick="openPage('/pages/TermsConditions.txt', 'Terms & Conditions');">
+        <div class="info_icon">
+          <i icon-outlined>privacy_tip</i>
+        </div>
+        <p>Terms and Conditions</p>
+      </div>
+
+      <div class="info-item ripple_btn_low" onclick="openPage('/pages/privacyPolicy.txt', 'Privacy Policy');">
+        <div class="info_icon">
+          <i icon-outlined>policy</i>
+        </div>
+        <p>Privacy Policy</p>
+      </div>
+
+      <div class="info-item ripple_btn_low" onclick="window.location.href='https://github.com/PranshulGG/NoteNest'">
+        <div class="info_icon">
+          <i icon-outlined>code</i>
+        </div>
+        <p>View source code</p>
+        <flex-space></flex-space>
+        <md-icon icon-outlined>chevron_right</md-icon>
+      </div>
+
+      <div class="info-item ripple_btn_low" onclick="window.location.href='https://github.com/PranshulGG/NoteNest/releases'">
+        <div class="info_icon">
+          <i icon-outlined>system_update</i>
+        </div>
+        <p>Latest version</p>
+        <flex-space></flex-space>
+        <md-icon icon-outlined>chevron_right</md-icon>
+      </div>
+
+      <div class="info-item ripple_btn_low" onclick="openPage('/pages/licenses.txt', 'Third Party Licenses');">
+        <div class="info_icon">
+          <i icon-outlined>copyright</i>
+        </div>
+        <p>Third party licenses</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info_icon">
+          <i icon-outlined>123</i>
+        </div>
+        <p>Version: 1.0.0 (N)</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="nav-tab" id="nav-tab">
+    <div class="main-btn">
+      <label class="btn-nav" style="width: 100%">
+        <button id="notes" class="nav-icon tab" onclick="showTab(0)">sticky_note_2</button>
+        <label class="label btm_tabs" for="notes">Notes</label>
+      </label>
+      <label class="btn-nav" style="width: 100%;">
+        <button id="todo" class="nav-icon tab" onclick="showTab(1)">task</button>
+        <label class="label btm_tabs" for="todo">Tasks</label>
+      </label>
+      <label class="btn-nav" style="width: 100%;">
+        <button id="setting" class="nav-icon tab" onclick="showTab(2);">settings</button>
+        <label class="label btm_tabs" for="setting">Settings</label>
+      </label>
+      <label class="btn-nav" style="width: 100%;">
+        <button id="about" class="nav-icon tab" onclick="showTab(0);">info</button>
+        <label class="label btm_tabs" for="about">About</label>
+      </label>
+    </div>
+  </div>
+
+
+  <div id="AddNoteModal" class="addNoteModal" hidden>
+    <div class="full-activity-header-v2 round transparent" id="head-2">
+      <div>
+        <button class="ripple-icon-btn closeModalNote regular" data-icon="arrow_back" icon-type="outlined">
+        </button>
+        <p>Add Note</p>
+      </div>
+      <button class="ripple-icon-btn regular" id="saveNoteBtn" data-icon="done" icon-type="outlined">
+      </button>
+      <button class="ripple-icon-btn regular" id="saveNoteBtnEdit" data-icon="done" icon-type="outlined" hidden>
+      </button>
+    </div>
+    <div class="full-activity-content" id="headUser-2">
+      <textarea id="noteHeading" placeholder="Title"></textarea>
+
+
+      <textarea id="noteContent" placeholder="Note"></textarea>
+
+      <div id="addedChips" style="margin-bottom: 100px; padding: 10px;">
+
+      </div>
+
+
+
+      <div class="fab_container_regular" fab="fab_3">
+        <md-fab id="addLabelToCurrentNoteFab" label="New label" variant="secondary"
+          style="--md-fab-label-text-size: 1rem;">
+          <md-icon slot="icon" icon-outlined>label</md-icon>
+        </md-fab>
+      </div>
+
+
+
+
+      <!-- select label to add -->
+      <md-dialog id="SelectLabelsToAddDialog">
+        <div slot="headline">Select labels</div>
+        <form method="dialog" slot="content" id="SelectLabelsToAddFrom"
+          style="padding-left: 15px; padding-right: 15px;">
+          <div id="CreatelabelItems">
+
+          </div>
+          <div class="waterMark" id="mark_5" style="margin-top: 0;" small>
+            <i icon-outlined>cancel</i>
+            <p>No Labels</p>
+          </div>
+
+        </form>
+
+        <div slot="actions">
+          <md-text-button form="SelectLabelsToAddFrom">Cancel</md-text-button>
+          <md-text-button form="SelectLabelsToAddFrom" disabled id="addSelectedLabelToNoteBtn">Add</md-text-button>
+        </div>
+      </md-dialog>
+    </div>
+  </div>
+
+
+  <div id="viewNoteModal" class="viewNoteModal" hidden>
+    <div class="full-activity-header-v2 round transparent" id="head-3">
+      <div>
+        <button class="ripple-icon-btn closeViewModalNote regular" onclick="window.history.back()"
+          data-icon="arrow_back" icon-type="outlined">
+        </button>
+        <p>Your note</p>
+      </div>
+    </div>
+    <div class="full-activity-content" id="headUser-3">
+      <div id="ViewnoteHeading" style="height: max-content;"></div>
+      <div id="ViewnoteContent" style="height: max-content;"></div>
+
+      <div id="addedChipsView"></div>
+
+    </div>
+  </div>
+
+
+
+  <div class="overlay_search" onclick="window.history.back()" hidden></div>
+
+
+  <div class="password_entry" hidden id="enter_password">
+    <div class="pass_entry_content">
+
+
+      <div class="pass_form">
+        <h3 id="passverify_result_text">Enter password</h3>
+        <div class="entry_pass_access">
+          <i icon-outlined>lock</i>
+          <input type="password" placeholder="Password" id="entry_password_input" autocomplete="off" maxlength="15">
+          <md-icon-button toggle slot="trailing-icon" id="visibility_entry_pass_input" style="flex-shrink: 0;">
+            <md-icon icon-outlined>visibility_off</md-icon>
+            <md-icon icon-outlined slot="selected">visibility</md-icon>
+          </md-icon-button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="verify_entry_pass_btn ripple_btn_low" id="enterAppPasswordVerify">Verify <i
+        icon-outlined>start</i></button>
+  </div>
+
+
+  <div class="password_entry" id="create_password" hidden style="animation: theme_overlay 0.3s ease-in;">
+    <div class="pass_entry_content">
+
+      <div class="exit_password_create">
+        <button class="ripple-icon-btn regular" onclick="exitCreatepassword()" data-icon="arrow_back"
+          icon-type="outlined"></button>
+      </div>
+
+      <div class="pass_form">
+        <h3 id="passverify_result_text">Create password</h3>
+        <md-outlined-text-field placeholder="Create a password" type="password" autocomplete="off" maxlength="4"
+          id="createPassInput">
+          <md-icon slot="leading-icon" icon-outlined>key</md-icon>
+        </md-outlined-text-field>
+
+        <md-outlined-text-field placeholder="Confirm password" type="password" autocomplete="off" maxlength="4"
+          id="ConfirmCreatePassInput" hidden error-text="Wrong password. Please try again">
+          <md-icon slot="leading-icon" icon-outlined>key</md-icon>
+        </md-outlined-text-field>
+      </div>
+
+      <div class="pass_length" style="margin-top: 40px;">
+        <md-list-item id="pass_length_create_item">
+          <div slot="headline">Password length</div>
+
+          <md-outlined-select slot="end"
+            style="min-width: max-content; --md-outlined-field-bottom-space: 10px;--md-outlined-field-top-space: 10px;"
+            id="length_create_pass">
+            <md-select-option selected value="4-length" menu-type>
+              <div slot="headline">4</div>
+            </md-select-option>
+            <md-select-option value="8-length" menu-type>
+              <div slot="headline">8</div>
+            </md-select-option>
+          </md-outlined-select>
+        </md-list-item>
+      </div>
+
+    </div>
+
+
+    <div class="create_pass_actions" style="display: flex;">
+      <button class="verify_entry_pass_btn ripple_btn_low" id="back_btn_create_pass" hidden><i
+          icon-outlined>keyboard_tab_rtl</i> Back</button>
+      <button class="verify_entry_pass_btn ripple_btn_low" id="next_btn_create_pass" clickable="false">Next <i
+          icon-outlined>keyboard_tab</i></button>
+      <button class="verify_entry_pass_btn ripple_btn_low" id="save_btn_create_pass" hidden>Save <i
+          icon-outlined>keyboard_tab</i></button>
+
+    </div>
+  </div>
+
+
+
+  <div class="viewAboutPages" id="viewAboutPages" hidden>
+    <div class="viewAboutPageContent" id="viewAboutPageContent">
+
+      </div>
+
+    <div class="bottom_actions_view_page">
+      <button class="ripple-icon-btn regular" data-icon="arrow_back" icon-type="outlined"
+        onclick="window.history.back()"></button>
+      <p id="pageNameViewPage"></p>
+    </div>
+  </div>
+
+
+
+
+  <!-- <data value=""></data>  -->
+  <!-- theme-overlay -->
+  <div class="theme_overlay" hidden>
+    <md-circular-progress id="theme_loader"></md-circular-progress>
+  </div>
+
+
+  <!-- add labels -->
+
+  <div class="addLabelsScreen" id="addLabelsScreen" hidden>
+    <div class="full-activity-header-v2 round transparent" id="head-9">
+      <div>
+        <md-icon-button onclick="window.history.back()">
+          <md-icon icon-outlined>arrow_back</md-icon>
+        </md-icon-button>
+        <p>Labels</p>
+      </div>
+      <button class="ripple-icon-btn regular" data-icon="delete" icon-type="outlined" type="error"
+        id="deleteSelectedLabelBtn" hidden></button>
+    </div>
+    <div class="full-activity-content" id="headUser-9">
+
+      <div id="addedLabelsContainer">
+
+      </div>
+
+
+
+      <div class="waterMark" id="mark_4" style="margin-top: 20px;">
+        <i icon-outlined>label</i>
+        <p>No Labels</p>
+      </div>
+
+
+      <div class="fab_container_regular">
+        <md-fab id="addNewLabelFab" label="New label" variant="primary" style="--md-fab-label-text-size: 1rem;">
+          <md-icon slot="icon" icon-outlined>add</md-icon>
+        </md-fab>
+      </div>
+
+
+      <!-- add label dialog -->
+
+      <md-dialog id="addLabelDialog">
+        <div slot="headline">Add label</div>
+
+        <form method="dialog" id="addNoteLabelForm" slot="content">
+          <md-outlined-text-field id="NameLabelInputAdd" autocomplete="off">
+          </md-outlined-text-field>
+        </form>
+
+        <div slot="actions">
+          <md-text-button form="addNoteLabelForm">Cancel</md-text-button>
+          <md-text-button form="addNoteLabelForm" id="SaveCreatedLabel" disabled>Save</md-text-button>
+        </div>
+      </md-dialog>
+    </div>
+
+
+  </div>
+
+
+
+      <!-- edit profile -->
+
+      <md-dialog id="EditprofileDialog" style="z-index: 999;">
+        <span slot="headline">
+        <div>Profile</div>
+        <flex-space></flex-space>
+        <md-icon-button onclick="changeProfilePic()" style="--md-icon-button-icon-size: 35px; flex-shrink: 0;">
+          <img src="profile.png" id="profilePicChangerImg" style="border-radius: 50px; width: 35px; height: 35px; object-fit: cover; image-rendering: -webkit-optimize-contrast;" >
+        </md-icon-button>
+      </span>
+        <div method="dialog" id="EditProfileForm" slot="content" >
+          <input type="file" accept="image/*" id="changeProfilePicInput" hidden>
+  
+          <md-outlined-text-field placeholder="Enter name" id="EnterYourNameProfile">
+  
+          </md-outlined-text-field>
+        </div>
+        <div slot="actions">
+          <md-text-button onclick="UpdateProfile()" id="updateProfileBtn" disabled>
+            Update
+          </md-text-button>
+        </div>
+      </md-dialog>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      checkTHEME()
+    });
+
+    const hideTabLabelToggle = document.getElementById('hide_tab_label');
+    const btm_tabs = document.querySelectorAll('.btm_tabs');
+
+    hideTabLabelToggle.addEventListener('change', () => {
+      localStorage.setItem('HideTabLabel', hideTabLabelToggle.selected);
+
+      if (hideTabLabelToggle.selected) {
+        btm_tabs.forEach((btm_tab) => {
+          btm_tab.setAttribute('only-selected', '')
+        });
+      } else {
+        btm_tabs.forEach((btm_tab) => {
+          btm_tab.removeAttribute('only-selected')
+        });
+      }
+    });
+
+    if (localStorage.getItem('HideTabLabel') === 'true') {
+      hideTabLabelToggle.selected = true;
+      btm_tabs.forEach((btm_tab) => {
+        btm_tab.setAttribute('only-selected', '')
+      });
+    } else {
+      hideTabLabelToggle.selected = false;
+      btm_tabs.forEach((btm_tab) => {
+        btm_tab.removeAttribute('only-selected')
+      });
+    }
+
+
+    document.getElementById('visibility_entry_pass_input').addEventListener('change', () => {
+      if (document.getElementById('visibility_entry_pass_input').selected) {
+        document.getElementById('entry_password_input').type = 'text';
+      } else {
+        document.getElementById('entry_password_input').type = 'password';
+
+      }
+      document.getElementById('entry_password_input').focus()
+    });
+
+
+
+  </script>
+
+
+
+
+  <script src="./bundle.js"></script>
+  <script type="module" src="./index.js"></script>
+  <script src="app/app.js"></script>
+  <script src="ripple-files/icon-ripple.js"></script>
+  <script src="components-script.js/bottom-nav.js"></script>
+  <script src="modules/add_ripple.js"></script>
+  <script src="modules/call-themes.js"></script>
+  <script src="components-script.js/components.js"></script>
+  <script src="app/note.js"></script>
+  <script src="modules/theme.js"></script>
+  <script src="modules/scroll.js"></script>
+  <script src="modules/apply.js"></script>
+  <script src="app/change_pass.js"></script>
+  <script src="app/todos.js"></script>
+</body>
+
+</html>

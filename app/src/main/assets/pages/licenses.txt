@@ -1,0 +1,37 @@
+<div class="licenses-div" onclick="window.location.href='https://fonts.google.com/specimen/Outfit?query=outfit'" style="margin-left: 0; margin-right: 0; position: relative; margin-top: 20px;">
+                    <h2 class="name-main">Outfit </h2>
+                    <span class="name-label">Rodrigo Fuenzalida, Smartsheet Inc</span>
+                    <p class="main-license">A beautiful geometric sans: The official typeface for brand automation
+                        company outfit.io. Inspired by the ligature-rich outfit wordmark, Outfit.io is delighted to
+                        release it's own type family. The Outfit typeface links the Outfit written voice to Outfit
+                        product marks; on brand by default.</p>
+                    <span class="license-label">Open Font License</span>
+                    <md-ripple style="--md-ripple-pressed-opacity: 0.13;"></md-ripple>
+                </div>
+
+                <div class="licenses-div" onclick="window.location.href='https://fonts.google.com/specimen/Poppins?query=poppins'" style="margin-left: 0; margin-right: 0; position: relative;">
+                    <h2 class="name-main">Poppins </h2>
+                    <span class="name-label">Indian Type Foundry, Jonny Pinhorn</span>
+                    <p class="main-license">Poppins is a geometric sans serif font supporting Devanagari and Latin
+                        scripts. Its Latin glyphs are rationalist, while the Devanagari design, introduced in 2015, was
+                        pioneering, featuring various weights. Developed by Indian Type Foundry, Poppins maintains
+                        monolinear letterforms with optical corrections. It later expanded to include multiple weights
+                        and italics by the ITF studio team. </p>
+                    <span class="license-label">Open Font License</span>
+
+                    <md-ripple style="--md-ripple-pressed-opacity: 0.13;"></md-ripple>
+                </div>
+
+                <div class="licenses-div" onclick="window.location.href='https://github.com/material-components/material-web'" style="margin-left: 0; margin-right: 0; position: relative;">
+                    <h2 class="name-main">Material design components </h2>
+                    <span class="name-label">Open Source Project</span>
+                    <p class="main-license">Material Web, or MWC, is a web component library aligned with Google's
+                        Material Design guidelines. Supported by Google, it offers guidance for creating Material apps
+                        and components, accessible on material.io. Material 3, the latest version, enhances experiences
+                        with dynamic color, better accessibility, and support for large screen layouts and design
+                        tokens.</p>
+                    <span class="license-label">Apache-2.0</span>
+                    <md-ripple style="--md-ripple-pressed-opacity: 0.13;"></md-ripple>
+                </div>
+
+            <br>
