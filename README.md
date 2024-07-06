@@ -12,9 +12,9 @@ NoteNest is developed with pure HTML, CSS, JavaScript, and Java. Designed to mim
 | :---: |                                                                                                    :---: |                                                                                                     :---: |             :---: | 
 | <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_1.jpeg" style="width: 250px;"> |  <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_2.jpeg" style="width: 250px;"> |   <img    src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_3.jpeg" style="width: 250px;"> |   <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_4.jpeg" style="width: 250px;"> | 
 
-| Completed Todo list |                                                                                       Settings |                                                                                               Added Labels |  
-| :---: |                                                                                                    :---: |                                                                                                    :---: |
-| <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_5.jpeg" style="width: 250px;"> |  <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_6.jpeg" style="width: 250px;"> | <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_7.jpeg" style="width: 250px;"> |
+| Completed Todo list |                                                                                       Settings |                                                                                               Added Labels |   Locked app screen| 
+| :---: |                                                                                                    :---: |                                                                                                    :---: |          :---: | 
+| <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_5.jpeg" style="width: 250px;"> |  <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_6.jpeg" style="width: 250px;"> | <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_7.jpeg" style="width: 250px;"> |  <img src="https://github.com/PranshulGG/NoteNest/blob/master/noteImg/img_8.jpeg" style="width: 250px;"> |
 
 
 <br>
