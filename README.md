@@ -38,7 +38,7 @@ NoteNest is developed with pure HTML, CSS, JavaScript, and Java. Designed to mim
  - <strong>Responsive Design: </stronge>NoteNest is fully responsive, providing a seamless experience across different devices and screen sizes.
    
  - <strong>User-Friendly Interface: </stronge>The app's interface is designed to be straightforward and user-friendly.
- - 
+  
  - <strong>Backup: </stronge>You can create backups by exporting the notes as a .json file and then importing them. This setting is available within the app.
 
 # 🛠️ Built With:
