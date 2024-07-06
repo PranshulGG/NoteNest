@@ -50,6 +50,13 @@ NoteNest is developed with pure HTML, CSS, JavaScript, and Java. Designed to mim
  - <strong>Java: </stronge>Mainly used for JavaScript interface and permissions, allowing the app to run on Android devices.
    
  - <strong>Material Web Components: </stronge>Utilized to create a consistent and attractive Material Design look and feel.
+
+# ✅ Todos:
+ 
+ - [ ] Feature to add lists, images, and voice memos
+ - [ ] Better note editor
+ - [ ] Feature Add reminders
+ - [ ] Ability to unlock the app using biometric authentication
    
 <br>
 <br>
