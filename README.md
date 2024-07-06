@@ -2,7 +2,7 @@
  
 <img src="https://github.com/PranshulGG/NoteNest/blob/master/app/src/main/res/drawable/app_icon.png" alt="" width="150px">
 
-PassMaster is developed with pure HTML, CSS, JavaScript, and Java. Designed to mimic the look and feel of a native Android app.
+NoteNest is developed with pure HTML, CSS, JavaScript, and Java. Designed to mimic the look and feel of a native Android app.
 
 
 # 👁️ Preview
@@ -29,16 +29,17 @@ PassMaster is developed with pure HTML, CSS, JavaScript, and Java. Designed to m
 
 # ✨ Features:
 
- - <strong>Native Android Experience: </stronge>Enjoy a user interface and interaction that closely resemble a native Android PassMaster app.
+ - <strong>Native Android Experience: </stronge>Enjoy a user interface and interaction that closely resemble a native Android NoteNest app.
    
  - <strong>Material Design: </stronge>The app is built using Material Web Components, ensuring a clean, consistent, and visually appealing design.
 
  - <strong>Customization Options: </stronge>Enjoy a ton of customization options. Adjust themes, layout, security settings.
    
- - <strong>Responsive Design: </stronge>PassMaster is fully responsive, providing a seamless experience across different devices and screen sizes.
+ - <strong>Responsive Design: </stronge>NoteNest is fully responsive, providing a seamless experience across different devices and screen sizes.
    
  - <strong>User-Friendly Interface: </stronge>The app's interface is designed to be straightforward and user-friendly.
-
+ - 
+ - <strong>Backup: </stronge>You can create backups by exporting the notes as a .json file and then importing them. This setting is available within the app.
 
 # 🛠️ Built With:
 
