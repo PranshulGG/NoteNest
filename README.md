@@ -23,7 +23,7 @@ NoteNest is developed with pure HTML, CSS, JavaScript, and Java. Designed to mim
 # 📲 Download
 
 <p align="left">
-    <a href="https://github.com/PranshulGG/PassMaster/releases"><img alt="GitHub" src="https://github.com/PranshulGG/CalcMaster-A-Calculator-App/blob/master/previewed/badge_github.png" height="120"/></a>
+    <a href="https://github.com/PranshulGG/NoteNest/releases"><img alt="GitHub" src="https://github.com/PranshulGG/CalcMaster-A-Calculator-App/blob/master/previewed/badge_github.png" height="120"/></a>
 </p>
 
 
